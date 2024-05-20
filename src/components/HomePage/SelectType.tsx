@@ -22,7 +22,7 @@ function SelectType({setOptionPokemon}:Props) {
     <select onChange={(e)=> handleOption(e)}>
         <option value="All">All Pokemon</option>
         {pokemonApi?.results.map(option => (
-            <option value={option.url}>{option.name}</option>
+            <option key={option.url} value={option.url}>{option.name}</option>
         ))}
     </select>
   )

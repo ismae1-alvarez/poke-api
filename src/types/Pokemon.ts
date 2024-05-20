@@ -7,3 +7,8 @@ interface PokemonOption {
     pokemon: Pokemon;
     slot: number;
   }
+
+
+interface Page {
+  number : number
+}
