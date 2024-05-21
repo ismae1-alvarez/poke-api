@@ -3,14 +3,22 @@ import { useParams } from "react-router-dom"
 import useFetch from "../hook/useFetch"
 
 function PokeInfoPage() {
-    const {pokemonStack, fetchPokemon}  =  useFetch()
+    const {pokemonStack, fetchPokemon, pokemonesEvolution, fetchPokemonEvolution}  =  useFetch()
   const  {name} = useParams()
   
   useEffect(() => {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}/`
-
     fetchPokemon(url)
-  }, [name])
+
+    // Tener que chechar
+    if(pokemonStack?.id){
+        
+        const url = `https://pokeapi.co/api/v2/evolution-chain/${pokemonStack.id}/`
+        fetchPokemonEvolution(url)
+    }
+  }, [name, pokemonStack?.id])
+
+  
 
   
   return (

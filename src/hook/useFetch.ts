@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+// import { PokemonEvolution } from '../types/PokemonEvolution';
 
 function useFetch() {
 
@@ -7,10 +8,10 @@ function useFetch() {
     const [pokemonApi, setPokemonApi] = useState<Pokemon>()
 
     // State Stack Pokemones
-    const [pokemonStack, setPokemonStack] = useState<DetailedPokemonInfo>()
+    const [pokemonStack, setPokemonStack] = useState<DetailedPokemonInfo>();
 
-    // State pokemon 
-    // const [pokemon, setPokemon] = useState<PokemonInfo>()
+    // Statate PokemonesEvolution
+    const [pokemonesEvolution  , setPokemonesEvolution   ] = useState<PokemonEvolution>()
 
 
     const apiFetch = (url:string)=>{
@@ -47,9 +48,19 @@ function useFetch() {
         .catch(err => console.log(err))
     }
 
+    const fetchPokemonEvolution = (url:string)=>{
+        axios.get(url)
+            .then(res => {
+                setPokemonesEvolution(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
     
 
 
-    return {pokemonApi, apiFetch, pokemonStack, fetchDetails,  fetchPokemon, fetchOption}
+    return {pokemonApi, apiFetch, pokemonStack, fetchDetails,  fetchPokemon, fetchOption, pokemonesEvolution, fetchPokemonEvolution}
 }
 export default useFetch
