@@ -24,7 +24,7 @@ function Login() {
   
   return (
    <Fragment>
-      <form className='bg-gray-400 flex flex-col p-3' >
+      <form className="bg-gray-200 gap-5 flex flex-col pt-10">
         <input ref={myTrainer} type="text" placeholder='Benja' />
 
         <button onClick={(e)=> handleTrainer(e)} type='submit' className='bg-green-400 px-3 py-2 rounded'>Create Trainer</button>

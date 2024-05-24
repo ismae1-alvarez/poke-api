@@ -1,15 +1,12 @@
 import { Fragment, useEffect, useRef, useState } from "react"
 import { useAppSelector } from "../store"
 import useFetch from "../hook/useFetch"
-import { Prueba, Prueba2, SelectType } from "../components"
+import { NavBar, Prueba, Prueba2, SelectType } from "../components"
 
 function Home() {
   const [pokemon, setPokemon] = useState<string>('');
   const [optionPokemon, setOptionPokemon] = useState<string>('All')
 
-  // Page
-  // const [arrPage, setArrPage] = useState<number[]>([])
-  // const [loading, setLoading] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pokemonPage, setPokemonPage] = useState<number>(5)
 
@@ -20,18 +17,12 @@ function Home() {
 
   useEffect(()=>{
     if(optionPokemon === 'All'){
-      const url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
+      const url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0' 
       apiFetch(url)
     }else{
       fetchOption(optionPokemon)
     }
   },[optionPokemon])
-
-  // Prueba 
-  // useEffect(() => {
-  //   // Reiniciar la página actual cuando cambie el término de búsqueda o la opción de filtro
-  //   setCurrentPage(1);
-  // }, [pokemon, optionPokemon]);
 
   const handleSeacrhingPokemon = (e: React.FormEvent<HTMLFormElement>)=> {
     e.preventDefault()
@@ -52,14 +43,16 @@ function Home() {
 
   return (
     <Fragment>
-      <div>{trainer}</div>
-
-      <form onSubmit={(e)=> handleSeacrhingPokemon(e)}>
-        <input type="text" placeholder="Searching Pokemon" ref={searchPokemon}/>
-        <button type="submit">Searching</button>
+      <NavBar/>
+      <div className="">{trainer}</div>
+     <div className="flex w-full gap-5 py-10">
+      <form onSubmit={(e)=> handleSeacrhingPokemon(e)} className=" flex gap-1">
+          <input type="text" placeholder="Searching Pokemon" className="py-3 bg-gray-300 bg-opacity-60 rounded-md " ref={searchPokemon}/>
+          <button type="submit" className="py-2 px-3 bg-global rounded-md text-white font-bold">Searching</button>
       </form>
 
-      <SelectType  setOptionPokemon={setOptionPokemon}/>
+        <SelectType  setOptionPokemon={setOptionPokemon}/>
+     </div>
 
       {
         pokemonApi?.results.length &&  <Prueba2 pokemonApi={currentPokemon} searchingPokemon={searchingPokemon} pokemon={pokemon} />

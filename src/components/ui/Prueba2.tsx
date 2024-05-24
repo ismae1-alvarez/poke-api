@@ -11,7 +11,7 @@ const Prueba2 = ({pokemonApi,searchingPokemon, pokemon}:Props) => {
 
     return (
     <div>
-        <div>
+        <div className="flex gap-2 flex-wrap">
             {   
                 pokemonApi && pokemonApi.filter(searchingPokemon).length === 0
                 ? <h2>No Existe el pokemons {pokemon}</h2>
@@ -20,16 +20,6 @@ const Prueba2 = ({pokemonApi,searchingPokemon, pokemon}:Props) => {
                 )))
             }
         </div>
-        {/* <div>
-        {
-          pokemonApi && pokemonApi.results.filter(searchingPokemon).length === 0
-          ? <h3>Error no exist pokemons {pokemon}</h3>
-
-          :(pokemonApi?.results.filter(searchingPokemon).map(poke => (
-            <Card key={poke.name}  poke={poke}/>
-          )))
-        }
-      </div> */}
     </div>
   )
 }
