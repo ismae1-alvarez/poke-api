@@ -44,7 +44,8 @@ function Home() {
   return (
     <Fragment>
       <NavBar/>
-      <div className="">{trainer}</div>
+      <div className="text-xl font-semibold py-3 px-3 text-gray-500">¡Hi Trainer! <span className="text-global">{trainer}</span> <br /> if you want to find you favorite pokemon,
+        please give me your trainer name</div>
       <div className="flex w-full gap-5 py-10 flex-wrap">
           <form onSubmit={(e)=> handleSeacrhingPokemon(e)} className="flex gap-1 justify-between mx-5">
               <input type="text" placeholder="Searching Pokemon" className="py-3 px-3 bg-gray-300 bg-opacity-60 rounded-md " ref={searchPokemon}/>

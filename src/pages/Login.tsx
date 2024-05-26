@@ -24,10 +24,12 @@ function Login() {
   
   return (
    <Fragment>
-      <form className="bg-gray-200 gap-5 flex flex-col pt-10">
-        <input ref={myTrainer} type="text" placeholder='Benja' />
-
-        <button onClick={(e)=> handleTrainer(e)} type='submit' className='bg-green-400 px-3 py-2 rounded'>Create Trainer</button>
+      <form className="bg-gray-200 gap-5 flex flex-col justify-center pt-10 h-screen px-5 py-8 items-center">
+        <div className=' flex flex-col justify-center w-fit gap-5'>
+          <label htmlFor="name" className='text-xl'>Trainer</label>
+          <input ref={myTrainer} type="text" placeholder='Ismael' className='py-2 px-3 rounded-md' id='name'/>
+          <button onClick={(e)=> handleTrainer(e)} type='submit' className='bg-orange-400 text-white  px-3 py-2 rounded text-xl'>Create Trainer</button>
+        </div>
       </form>
    </Fragment>
   )
