@@ -26,7 +26,7 @@ function Card({poke}:Props) {
         {
           pokemonStack && 
           (
-            <article  onClick={handeNavDetail} className={`bg-${color} p-3 rounded-md `}>
+            <article  onClick={handeNavDetail} className={`bg-${color} p-3 rounded-md md:w-fit  w-fi mx-3 md:my-0  my-5 `}>
               <header className={`bg-${color} relative h-52 rounded-sm`}>
                 <img src={pokemonStack?.sprites.other.home?.front_default}  className="absolute -bottom-10   right-0 left-[50%] translate-x-[-50%]" alt="#"/>        
               </header>

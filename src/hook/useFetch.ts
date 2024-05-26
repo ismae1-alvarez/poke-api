@@ -11,7 +11,7 @@ function useFetch() {
     const [pokemonStack, setPokemonStack] = useState<DetailedPokemonInfo>();
 
     // Statate PokemonesEvolution
-    const [pokemonesEvolution  , setPokemonesEvolution   ] = useState<PokemonEvolution>()
+    // const [pokemonesEvolution, setPokemonesEvolution] = useState<String[]>()
 
 
     const apiFetch = (url:string)=>{
@@ -48,19 +48,13 @@ function useFetch() {
         .catch(err => console.log(err))
     }
 
-    const fetchPokemonEvolution = (url:string)=>{
-        axios.get(url)
-            .then(res => {
-                setPokemonesEvolution(res.data)
-            })
-            .catch(err => console.log(err))
-    }
+    
 
 
 
     
 
 
-    return {pokemonApi, apiFetch, pokemonStack, fetchDetails,  fetchPokemon, fetchOption, pokemonesEvolution, fetchPokemonEvolution}
+    return {pokemonApi, apiFetch, pokemonStack, fetchDetails,  fetchPokemon, fetchOption}
 }
 export default useFetch

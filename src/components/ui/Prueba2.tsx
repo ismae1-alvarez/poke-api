@@ -11,7 +11,7 @@ const Prueba2 = ({pokemonApi,searchingPokemon, pokemon}:Props) => {
 
     return (
     <div>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-5 flex-wrap mx-auto justify-center md:justify-start">
             {   
                 pokemonApi && pokemonApi.filter(searchingPokemon).length === 0
                 ? <h2>No Existe el pokemons {pokemon}</h2>

@@ -4,28 +4,22 @@ import useFetch from "../hook/useFetch"
 import { NavBar } from "../components"
 
 function PokeInfoPage() {
-    const {pokemonStack, fetchPokemon, pokemonesEvolution, fetchPokemonEvolution}  =  useFetch()
+    const {pokemonStack, fetchPokemon}  =  useFetch()
   const  {name} = useParams()
   
   useEffect(() => {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}/`
     fetchPokemon(url)
+  }, [name])
+  
 
-    // Tener que chechar
-    if(pokemonStack?.id){
-        const url = `https://pokeapi.co/api/v2/evolution-chain/${pokemonStack.id}/`
-        fetchPokemonEvolution(url)
-    }
-  }, [name, pokemonStack?.id])
 
   const color  = pokemonStack?.types[0].type.name;
-  const types  = pokemonStack?.types.map(e => e.type.name)
-
   return (
     
     <Fragment>
             <NavBar/>
-            <main className="py-10 relative">
+            <main className="py-10 relative ">
             <section className={`relative w-full  md:w-2/4 mx-auto  p-2 mt-10 space-y-5 shadow-2xl rounded-md `}>
                 <header className={`bg-${color} relative h-40 rounded-sm`}>
                     <img src={pokemonStack?.sprites.other.home?.front_default}  className=" mx-auto absolute w-[45%] -top-[75%]  md:-top-[85%] right-0 left-[50%] translate-x-[-50%]" alt="#"/>        
@@ -58,7 +52,7 @@ function PokeInfoPage() {
 
                     <div className="grid  text-center space-y-2">
                         <h4 className={`font-bold text-md text-${color}`}>Habilidades</h4>
-                        <ul className="flex gap-2 ">
+                        <ul className="flex gap-2 flex-wrap">
                             {pokemonStack?.abilities.map(abilities=> (
                                 <li  className={`px-3 py-3 bg-gray-100 rounded-md`} key={abilities.ability.url}>{abilities.ability.name}</li>
                             ))}
@@ -80,7 +74,7 @@ function PokeInfoPage() {
                             <p>{stat.stat.name}:</p>
                             <p>{stat.base_stat} / 150</p>
                         </div>
-                        <div className="w-full bg-gray-300 rounded-md h-2">
+                        <div className="w-full bg-gray-300 rounded-md h-2 overflow-hidden">
                             <div 
                                 className={`bg-${color} h-full rounded-md`} 
                                 style={{ width: `${(stat.base_stat / 150) * (stat.base_stat / 150) * 100}%` }}

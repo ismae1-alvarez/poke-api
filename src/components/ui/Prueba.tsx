@@ -11,7 +11,7 @@ const Prueba = ({ totalPokemon, pokemonPage, setCurrentPage }: Props) => {
   const totalPages = Math.ceil(totalPokemon.length / pokemonPage);
   const [currentPage, setCurrentPageState] = useState(1);
 
-  const maxPagesToShow = 5;
+  const maxPagesToShow = 3;
   const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
 
   const handleSetCurrentPage = (page: number) => {
@@ -38,30 +38,30 @@ const Prueba = ({ totalPokemon, pokemonPage, setCurrentPage }: Props) => {
   const pageNumbers = getPageNumbers();
 
   return (
-      <nav className="  mt-10 bottom-0 relative w-full">
-          <ul className="flex gap-5  flex-wrap w-fit   mx-auto px-10 py-5 rounded-md items-center">
+      <nav className="mt-10 bottom-0 relative w-full md:text-md text-xs font-semibold">
+          <ul className="flex gap-5  flex-wrap w-fit   mx-auto md:px-10 md:py-5 rounded-md items-center p-1">
               {currentPage > 1 && (
                   <>
                       <li className="transition-all duration-200 ease-linear">
-                          <button  className="bg-[#DD1A1A] px-3 py-2 rounded-sm"  onClick={() => handleSetCurrentPage(1)}>First</button>
+                          <button  className="bg-[#DD1A1A] md:px-3 py-2 rounded-sm"  onClick={() => handleSetCurrentPage(1)}>First</button>
                       </li>
                       <li className="transition-all duration-200 ease-linear">
-                          <button  className="bg-[#DD1A1A] px-3 py-2 rounded-sm" onClick={() => handleSetCurrentPage(currentPage - 1)}>Previous</button>
+                          <button  className="bg-[#DD1A1A] md:px-3 py-2 rounded-sm" onClick={() => handleSetCurrentPage(currentPage - 1)}>Previous</button>
                       </li>
                   </>
               )}
               {pageNumbers.map((number) => (
                   <li  key={number}  className="transition-all duration-200 ease-linear">
-                      <button  className="hover:bg-[#DD1A1A] px-3 py-2 rounded-sm"  onClick={() => handleSetCurrentPage(number)}>{number}</button>
+                      <button  className="hover:bg-[#DD1A1A] md:px-3  py-2 rounded-sm"  onClick={() => handleSetCurrentPage(number)}>{number}</button>
                   </li>
               ))}
               {currentPage < totalPages && (
                   <>
                       <li  className="transition-all duration-200 ease-linear">
-                          <button  className="bg-[#DD1A1A] px-3 py-2 rounded-sm" onClick={() => handleSetCurrentPage(currentPage + 1)}>Next</button>
+                          <button  className="bg-[#DD1A1A] md:px-3 py-2 rounded-sm" onClick={() => handleSetCurrentPage(currentPage + 1)}>Next</button>
                       </li>
                       <li  className="transition-all duration-200 ease-linear">
-                          <button className="bg-[#DD1A1A] px-3 py-2 rounded-sm"  onClick={() => handleSetCurrentPage(totalPages)}>Last</button>
+                          <button className="bg-[#DD1A1A] md:px-3 py-2 rounded-sm"  onClick={() => handleSetCurrentPage(totalPages)}>Last</button>
                       </li>
                   </>
               )}

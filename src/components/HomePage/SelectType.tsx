@@ -19,7 +19,7 @@ function SelectType({setOptionPokemon}:Props) {
     }
 
     return (
-    <select  onChange={(e)=> handleOption(e)} className="px-10 rounded-md">
+    <select  onChange={(e)=> handleOption(e)} className="px-10 rounded-md md:py-0 py-5 md:w-fit w-full mx-5">
         <option value="All">All Pokemon</option>
         {pokemonApi?.results.map(option => (
             <option className="bg-red-900"  key={option.url} value={option.url}>{option.name}</option>

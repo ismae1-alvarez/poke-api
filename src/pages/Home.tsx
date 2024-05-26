@@ -8,7 +8,7 @@ function Home() {
   const [optionPokemon, setOptionPokemon] = useState<string>('All')
 
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [pokemonPage, setPokemonPage] = useState<number>(5)
+  const pokemonPage = 5
 
   const trainer  =  useAppSelector(values => values.trainer.trainer)
   const {pokemonApi, apiFetch, fetchOption} = useFetch()
@@ -45,14 +45,14 @@ function Home() {
     <Fragment>
       <NavBar/>
       <div className="">{trainer}</div>
-     <div className="flex w-full gap-5 py-10">
-      <form onSubmit={(e)=> handleSeacrhingPokemon(e)} className=" flex gap-1">
-          <input type="text" placeholder="Searching Pokemon" className="py-3 bg-gray-300 bg-opacity-60 rounded-md " ref={searchPokemon}/>
-          <button type="submit" className="py-2 px-3 bg-global rounded-md text-white font-bold">Searching</button>
-      </form>
+      <div className="flex w-full gap-5 py-10 flex-wrap">
+          <form onSubmit={(e)=> handleSeacrhingPokemon(e)} className="flex gap-1 justify-between mx-5">
+              <input type="text" placeholder="Searching Pokemon" className="py-3 px-3 bg-gray-300 bg-opacity-60 rounded-md " ref={searchPokemon}/>
+              <button type="submit" className="py-2 px-3 bg-global rounded-md text-white font-bold">Searching</button>
+          </form>
 
-        <SelectType  setOptionPokemon={setOptionPokemon}/>
-     </div>
+          <SelectType  setOptionPokemon={setOptionPokemon}/>
+      </div>
 
       {
         pokemonApi?.results.length &&  <Prueba2 pokemonApi={currentPokemon} searchingPokemon={searchingPokemon} pokemon={pokemon} />

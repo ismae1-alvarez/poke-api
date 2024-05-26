@@ -1,9 +1,6 @@
 
-interface Props {
-    name :  string | undefined
-}
 
-const CardInfo = ({name}:Props) => {
+const CardInfo = () => {
 
     
   return (
